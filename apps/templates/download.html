@@ -1,0 +1,168 @@
+{% extends "base.html" %}
+
+{% block title %}Download - Taylrd{% endblock %}
+
+{% block content %}
+<div id="download-root" data-job-id="{{ job_id }}"></div>
+
+<script type="text/babel">
+function DownloadPage() {
+    const jobId = document.getElementById('download-root').dataset.jobId;
+    const [files, setFiles] = React.useState({
+        tex: false,
+        pdf: false,
+        cover: false
+    });
+    
+    React.useEffect(() => {
+        // Check available files
+        fetch(`/api/files/${jobId}`)
+            .then(res => res.json())
+            .then(data => setFiles(data.files));
+    }, [jobId]);
+    
+    const downloadFile = (type) => {
+        window.location.href = `/api/download/${jobId}?type=${type}`;
+    };
+    
+    return (
+        <div className="download-container">
+            <h2>Download Your Files</h2>
+            <p className="subtitle">Job ID: {jobId}</p>
+            
+            <div className="files-grid">
+                <div className={`file-card ${files.tex ? 'available' : 'missing'}`}>
+                    <div className="file-icon">📄</div>
+                    <h3>Resume LaTeX</h3>
+                    <p>Source code for editing</p>
+                    <button 
+                        onClick={() => downloadFile('tex')}
+                        disabled={!files.tex}
+                        className="download-btn"
+                    >
+                        Download .tex
+                    </button>
+                </div>
+                
+                <div className={`file-card ${files.pdf ? 'available' : 'missing'}`}>
+                    <div className="file-icon">📑</div>
+                    <h3>Resume PDF</h3>
+                    <p>Ready to submit</p>
+                    <button 
+                        onClick={() => downloadFile('pdf')}
+                        disabled={!files.pdf}
+                        className="download-btn primary"
+                    >
+                        Download PDF
+                    </button>
+                </div>
+                
+                <div className={`file-card ${files.cover ? 'available' : 'missing'}`}>
+                    <div className="file-icon">✉️</div>
+                    <h3>Cover Letter</h3>
+                    <p>Matching cover letter</p>
+                    <button 
+                        onClick={() => downloadFile('cover_tex')}
+                        disabled={!files.cover}
+                        className="download-btn"
+                    >
+                        Download Cover
+                    </button>
+                </div>
+            </div>
+            
+            <div className="next-steps">
+                <h3>What's Next?</h3>
+                <ul>
+                    <li>Review the PDF carefully before submitting</li>
+                    <li>Customize the LaTeX source if needed</li>
+                    <li>Save to your <a href="/history">history</a> for later</li>
+                </ul>
+                <a href="/upload" className="new-resume-btn">Create Another Resume</a>
+            </div>
+        </div>
+    );
+}
+
+ReactDOM.createRoot(document.getElementById('download-root')).render(<DownloadPage />);
+</script>
+
+<style>
+.download-container {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+    text-align: center;
+}
+.subtitle {
+    color: #666;
+    margin-bottom: 2rem;
+}
+.files-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+.file-card {
+    background: #f8f9fa;
+    padding: 2rem;
+    border-radius: 12px;
+    border: 2px solid transparent;
+    transition: all 0.3s;
+}
+.file-card.available {
+    border-color: #667eea;
+}
+.file-card.missing {
+    opacity: 0.6;
+    background: #fee;
+}
+.file-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+.download-btn {
+    margin-top: 1rem;
+    padding: 0.75rem 1.5rem;
+    background: #667eea;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.download-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+.download-btn.primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    font-size: 1.1rem;
+    padding: 1rem 2rem;
+}
+.next-steps {
+    margin-top: 3rem;
+    padding: 2rem;
+    background: #f0f4ff;
+    border-radius: 12px;
+    text-align: left;
+}
+.next-steps ul {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+}
+.next-steps li {
+    margin: 0.5rem 0;
+    color: #555;
+}
+.new-resume-btn {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 1rem 2rem;
+    background: #28a745;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+}
+</style>
+{% endblock %}

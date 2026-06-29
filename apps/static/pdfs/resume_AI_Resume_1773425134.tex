@@ -1,0 +1,133 @@
+\documentclass[letterpaper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern} % Recommended for modern LaTeX fonts
+\usepackage{hyperref} % For clickable links
+\usepackage{geometry} % For page margins
+\geometry{
+    a4paper,
+    top=0.7in,
+    bottom=0.7in,
+    left=0.7in,
+    right=0.7in,
+}
+\usepackage{enumitem} % For custom list environments
+\usepackage{ragged2e} % For justified text and custom alignments
+\usepackage{titlesec} % For customizing section titles
+\usepackage{xcolor} % For colors, if desired (e.g., for section lines)
+\usepackage{fontawesome5} % For icons, e.g., for contact info
+
+% Customizing section titles to be clean and minimal
+\titleformat{\section}
+  {\normalfont\Large\bfseries\color{black}}{}{0em}{\MakeUppercase}
+\titlespacing*{\section}
+  {0pt}{1.5ex plus 1ex minus .2ex}{0.8ex plus .2ex} % Reduced space after section title
+
+% Customizing bullet points
+\setlist[itemize]{
+    itemsep=0ex,     % No extra space between items
+    parsep=0ex,      % No extra space between paragraphs within an item
+    topsep=0.5ex,    % Small space above the list
+    partopsep=0ex,   % No extra space when list starts at page top
+    leftmargin=1.5em % Adjust left margin for bullet points
+}
+% For nested lists (e.g., under Education or Experience)
+\setlist[itemize,2]{
+    itemsep=0ex,
+    parsep=0ex,
+    topsep=0.2ex,
+    partopsep=0ex,
+    leftmargin=1.2em, % Slightly less indent for nested items
+    label={--} % Custom label for nested items
+}
+
+% Hyperlink styling
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=blue,
+}
+
+% Remove page numbers
+\pagestyle{empty}
+
+% --- Begin Document ---
+\begin{document}
+
+% --- Header: Name and Contact Info ---
+\begin{center}
+    \vspace{-0.5em} % Adjust vertical space
+    {\Huge \textbf{Anvesh Varma Dantuluri}} \\
+    \vspace{0.2em}
+    \small
+    \href{mailto:ad7647@nyu.edu}{\faEnvelope\ ad7647@nyu.edu} \quad $|$ \quad
+    \faPhone\ +1 (201) 640-9986 \quad $|$ \quad
+    \href{https://linkedin.com/in/anvesh-varma}{\faLinkedin\ linkedin.com/in/anvesh-varma} \quad $|$ \quad
+    \href{https://github.com/Anveshvarmad}{\faGithub\ github.com/Anveshvarmad}
+    \vspace{-0.5em} % Adjust vertical space
+\end{center}
+
+% IMPORTANT: If Anvesh Varma Dantuluri possesses a Top Secret/SCI Clearance,
+% it is highly recommended to state it prominently here as it is a key job keyword.
+% Example (uncomment and modify as needed):
+% \begin{center}
+%     \small \textbf{US Citizen | Top Secret/SCI Clearance (or "Eligible for Top Secret/SCI Clearance")}
+% \end{center}
+% \vspace{-0.5em}
+
+% --- Summary/Objective ---
+% Crafted to integrate job keywords like AI Infrastructure Sales, US Federal Government Sales,
+% Enterprise Technology Sales, Generative AI, C-suite Management, Cross-functional Coordination,
+% Business Development, Communication Skills, Stakeholder Management.
+\section*{Summary}
+\begin{itemize}
+    \item Accomplished Computer Engineering professional with deep expertise in \textbf{AI Infrastructure}, \textbf{Generative AI}, and MLOps, seeking to leverage technical prowess into \textbf{Enterprise Technology Sales} roles, particularly within the \textbf{US Federal Government} sector.
+    \item Proven track record in designing fault-tolerant AI orchestration layers (AWS Bedrock), optimizing inference pipelines, and achieving significant operational cost reductions (\textbf{28\%}) and availability increases (\textbf{40\%}), demonstrating direct impact on \textbf{business development} and bottom-line value for \textbf{C-suite management}.
+    \item Skilled in \textbf{cross-functional coordination}, data analysis, and developing solutions that accelerate insight delivery, complemented by strong \textbf{communication skills} for effective \textbf{stakeholder management} in complex technical and business environments.
+\end{itemize}
+
+% --- Education ---
+\section*{Education}
+\begin{itemize}
+    \item \textbf{New York University}, New York, USA \hfill Aug 2024 – May 2026
+    \item Master of Science, Computer Engineering
+    \begin{itemize} % Uses itemize,2 settings defined above
+        \item Key Coursework: Machine Learning, Deep Learning, Reinforcement Learning, Big Data, Advanced Python for Data Science, Computer System Architecture, Applied Matrix Theory, Systems Engineering
+        \item Migrated legacy Python CGI scripts to a modern Django web application, deployed using Apache + mod\_wsgi, improving maintainability and runtime efficiency.
+        \item Certifications: Data Analysis with Python (IBM), Python Data Structures (University of Michigan), Google Data Analytics (Google), Data Visualization with Tableau (UC Davis)
+    \end{itemize}
+\end{itemize}
+
+% --- Technical Skills ---
+\section*{Technical Skills}
+\begin{itemize}[leftmargin=0.5in] % Adjust leftmargin to align nicely with other sections
+    \item \textbf{Programming \& Data:} Python, SQL, C++, Bash
+    \item \textbf{Machine Learning:} Supervised Learning, Unsupervised Learning, Feature Engineering, Model Evaluation
+    \item \textbf{Deep Learning:} PyTorch, TensorFlow, Neural Networks, CNNs, Transfer Learning
+    \item \textbf{LLMs \& Generative AI:} Large Language Models, Prompt Engineering, RAG, Embeddings
+    \item \textbf{MLOps \& Deployment:} Model Versioning, Experiment Tracking, Docker, CI/CD, Inference Optimization
+    \item \textbf{Cloud \& AI Systems:} AWS (EC2, S3, Lambda, Bedrock), GPU Computing, Cost Optimization
+\end{itemize}
+
+% --- Work Experience ---
+\section*{Work Experience}
+\begin{itemize}
+    \item \textbf{Software Development Engineer Intern (AI Systems)} \hfill \textbf{INFOLOB}, Remote
+    \item May 2025 – Aug 2025
+    \begin{itemize} % Uses itemize,2 settings defined above
+        \item Designed a fault-tolerant \textbf{AI orchestration layer} on MCP servers integrating \textbf{AWS Bedrock} for \textbf{Generative AI} inference, directly supporting future \textbf{AI Infrastructure Sales} initiatives.
+        \item Implemented autonomous fallback and recovery mechanisms, increasing task completion by \textbf{33\%} and system availability by \textbf{40\%}, demonstrating value for \textbf{C-suite management} and enhancing \textbf{business development} potential.
+        \item Optimized end-to-end inference pipelines, sustaining sub-minute latency under high-concurrency workloads, crucial for \textbf{enterprise technology sales} performance guarantees.
+        \item Reduced operational cost by \textbf{28\%} through intelligent model routing and dynamic endpoint selection, a key achievement for \textbf{stakeholder management} and cost-conscious clients.
+    \end{itemize}
+
+    \item \textbf{Software Engineering Intern (Data \& Analytics)} \hfill \textbf{INFOTECH LABS}, Hyderabad, India
+    \item May 2024 – Jul 2024
+    \begin{itemize} % Uses itemize,2 settings defined above
+        \item Developed scalable Power BI dashboards using SQL and DAX, accelerating insight delivery by \textbf{20\%} for \textbf{enterprise technology sales} teams.
+        \item Analyzed high-volume \textbf{sales datasets}, identifying critical trends driving revenue growth and informing strategic decisions for \textbf{stakeholder management} and improved \textbf{communication skills}.
+    \end{itemize}
+\end{itemize}
+
+\end{document}

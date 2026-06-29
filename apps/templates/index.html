@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="hero">
+    <h1>Taylrd</h1>
+    <p>AI-Powered Resume & Cover Letter Generator</p>
+    <p class="subtitle">Upload your resume, paste a job description, get a tailored LaTeX PDF in seconds</p>
+    
+    <div class="features">
+        <div class="feature">
+            <h3>🤖 AI Powered</h3>
+            <p>Uses Gemini API to understand job requirements</p>
+        </div>
+        <div class="feature">
+            <h3>📄 LaTeX Output</h3>
+            <p>Professional, ATS-friendly PDF generation</p>
+        </div>
+        <div class="feature">
+            <h3>⚡ Fast</h3>
+            <p>Generate tailored resumes in under 60 seconds</p>
+        </div>
+    </div>
+    
+    <a href="/upload" class="cta-button">Get Started</a>
+</div>
+
+<style>
+.hero {
+    text-align: center;
+    padding: 4rem 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+.hero h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.subtitle {
+    color: #666;
+    font-size: 1.2rem;
+    margin-bottom: 3rem;
+}
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+}
+.feature {
+    padding: 1.5rem;
+    background: #f8f9fa;
+    border-radius: 12px;
+}
+.cta-button {
+    display: inline-block;
+    padding: 1rem 3rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: transform 0.2s;
+}
+.cta-button:hover {
+    transform: translateY(-2px);
+}
+</style>
+{% endblock %}

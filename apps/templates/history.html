@@ -1,0 +1,158 @@
+{% extends "base.html" %}
+
+{% block title %}History - Taylrd{% endblock %}
+
+{% block content %}
+<div id="history-root"></div>
+
+<script type="text/babel">
+function HistoryPage() {
+    const [files, setFiles] = React.useState([]);
+    const [loading, setLoading] = React.useState(true);
+    
+    React.useEffect(() => {
+        fetch('/api/history')
+            .then(res => res.json())
+            .then(data => {
+                setFiles(data.files);
+                setLoading(false);
+            });
+    }, []);
+    
+    const formatDate = (timestamp) => {
+        return new Date(timestamp * 1000).toLocaleString();
+    };
+    
+    const formatSize = (bytes) => {
+        return (bytes / 1024).toFixed(1) + ' KB';
+    };
+    
+    const deleteFile = (jobId) => {
+        if (!confirm('Delete this resume?')) return;
+        
+        fetch(`/api/delete/${jobId}`, { method: 'DELETE' })
+            .then(() => {
+                setFiles(files.filter(f => f.job_id !== jobId));
+            });
+    };
+    
+    if (loading) return <div className="loading">Loading history...</div>;
+    
+    return (
+        <div className="history-container">
+            <h2>Generation History</h2>
+            
+            {files.length === 0 ? (
+                <div className="empty-state">
+                    <p>No resumes generated yet</p>
+                    <a href="/upload" className="create-btn">Create Your First Resume</a>
+                </div>
+            ) : (
+                <div className="history-list">
+                    {files.map(file => (
+                        <div key={file.job_id} className="history-item">
+                            <div className="file-info">
+                                <h4>{file.filename}</h4>
+                                <p className="meta">
+                                    {formatDate(file.created)} • {formatSize(file.size)}
+                                </p>
+                            </div>
+                            <div className="actions">
+                                <a 
+                                    href={`/preview/${file.job_id}`}
+                                    className="action-btn view"
+                                >
+                                    View
+                                </a>
+                                <a 
+                                    href={`/api/download/${file.job_id}?type=pdf`}
+                                    className="action-btn download"
+                                >
+                                    Download
+                                </a>
+                                <button 
+                                    onClick={() => deleteFile(file.job_id)}
+                                    className="action-btn delete"
+                                >
+                                    Delete
+                                </button>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            )}
+        </div>
+    );
+}
+
+ReactDOM.createRoot(document.getElementById('history-root')).render(<HistoryPage />);
+</script>
+
+<style>
+.history-container {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+}
+.loading, .empty-state {
+    text-align: center;
+    padding: 4rem;
+    color: #666;
+}
+.create-btn {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 1rem 2rem;
+    background: #667eea;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+}
+.history-list {
+    margin-top: 2rem;
+}
+.history-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    border-left: 4px solid #667eea;
+}
+.file-info h4 {
+    margin: 0 0 0.5rem 0;
+    color: #333;
+}
+.meta {
+    margin: 0;
+    color: #666;
+    font-size: 0.9rem;
+}
+.actions {
+    display: flex;
+    gap: 0.5rem;
+}
+.action-btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+.action-btn.view {
+    background: #e3f2fd;
+    color: #1976d2;
+}
+.action-btn.download {
+    background: #667eea;
+    color: white;
+}
+.action-btn.delete {
+    background: #ffebee;
+    color: #c62828;
+}
+</style>
+{% endblock %}

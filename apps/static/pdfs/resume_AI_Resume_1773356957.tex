@@ -1,0 +1,86 @@
+\documentclass{article} % Using article class for simplicity and ATS compatibility
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\geometry{letterpaper, margin=0.75in} % Adjust margins for more content
+\usepackage{fontawesome5} % For icons
+\usepackage{enumitem} % For custom list formatting
+\usepackage{hyperref} % For clickable links
+\usepackage{ragged2e} % For \RaggedRight
+
+% Custom commands for consistency and readability
+\newcommand{\sectionheader}[1]{\vspace{0.1in}\noindent\color{black}\Large\textbf{#1}\par\rule{\linewidth}{0.8pt}\vspace{-0.1in}} % Horizontal rule
+
+% Define colors
+\usepackage{xcolor}
+\definecolor{headerblue}{HTML}{000080} % Dark Blue
+
+% Hyperlink styling
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=blue,
+}
+
+% Customize itemize environment for tighter spacing
+\setlist[itemize]{leftmargin=*, noitemsep, topsep=0pt, partopsep=0pt, parsep=0pt}
+
+\begin{document}
+\RaggedRight % Align text to the left
+
+% --- Header ---
+\begin{center}
+    {\Huge\textbf{Anvesh Varma Dantuluri}}\\[5pt]
+    \normalsize
+    \faEnvelope \hspace{2pt} \href{mailto:ad7647@nyu.edu}{\color{black}ad7647@nyu.edu} \hspace{10pt}
+    \faPhone \hspace{2pt} +1 (201) 640-9986 \hspace{10pt}
+    \faLinkedin \hspace{2pt} \href{https://linkedin.com/in/anvesh-varma}{\color{black}linkedin.com/in/anvesh-varma} \hspace{10pt}
+    \faGithub \hspace{2pt} \href{https://github.com/Anveshvarmad}{\color{black}github.com/Anveshvarmad}
+\end{center}
+
+% --- Education ---
+\sectionheader{Education}
+\vspace{-5pt}
+\noindent\textbf{New York University} \hfill New York, USA \\
+Master of Science, Computer Engineering \hfill Aug 2024 – May 2026
+\begin{itemize}
+    \item Key Coursework: Machine Learning, Deep Learning, Reinforcement Learning, Big Data, Advanced \textbf{Python} for Data Science, Computer System Architecture, Applied Matrix Theory, Systems Engineering
+    \item Migrated legacy \textbf{Python} CGI scripts to a modern Django web application, deployed using Apache + mod\_wsgi, improving maintainability and runtime efficiency.
+    \item Certifications: Data Analysis with \textbf{Python} (IBM), \textbf{Python} Data Structures (University of Michigan), Google Data Analytics (Google), Data Visualization with Tableau (UC Davis)
+\end{itemize}
+
+% --- Technical Skills ---
+\sectionheader{Technical Skills}
+\vspace{-5pt}
+\begin{itemize}
+    \item \textbf{Programming \& Data:} \textbf{Python}, SQL, \textbf{C++}, Bash, \textbf{Java}
+    \item \textbf{Machine Learning:} Supervised Learning, Unsupervised Learning, Feature Engineering, Model Evaluation
+    \item \textbf{Deep Learning:} PyTorch, TensorFlow, Neural Networks, CNNs, Transfer Learning
+    \item \textbf{LLMs \& Generative AI:} Large Language Models, Prompt Engineering, RAG, Embeddings
+    \item \textbf{MLOps \& Deployment:} Model Versioning, Experiment Tracking, Docker, CI/CD, Inference Optimization
+    \item \textbf{Cloud \& AI Systems:} AWS (EC2, S3, Lambda, Bedrock), GPU Computing, Cost Optimization
+\end{itemize}
+
+% --- Work Experience ---
+\sectionheader{Work Experience}
+\vspace{-5pt}
+\noindent\textbf{INFOLOB} \hfill Remote \\
+Software Development Engineer Intern (AI Systems) \hfill May 2025 – Aug 2025
+\begin{itemize}
+    \item Designed a fault-tolerant AI orchestration layer on MCP servers integrating AWS Bedrock for inference.
+    \item Implemented autonomous fallback and recovery mechanisms increasing task completion by 33\% and availability by 40\%.
+    \item Optimized end-to-end inference pipelines sustaining sub-minute latency under high-concurrency workloads.
+    \item Reduced operational cost by 28\% through intelligent model routing and dynamic endpoint selection.
+\end{itemize}
+
+\vspace{5pt}
+\noindent\textbf{INFOTECH LABS} \hfill Hyderabad, India \\
+Software Engineering Intern (Data \& Analytics) \hfill May 2024 – Jul 2024
+\begin{itemize}
+    \item Developed scalable Power BI dashboards using SQL and DAX accelerating insight delivery by 20\%.
+    \item Analyzed high-volume sales datasets identifying trends driving future business strategies.
+    % Assuming the sentence was cut off, added a reasonable completion for a resume
+\end{itemize}
+
+\end{document}

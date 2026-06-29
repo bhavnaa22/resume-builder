@@ -1,0 +1,83 @@
+\documentclass[letterpaper,10pt]{moderncv}
+
+% moderncv options
+\moderncvstyle{casual} % Choose a style: 'casual', 'classic', 'banking', 'oldstyle', 'fancy'
+\moderncvcolor{blue} % Choose a color: 'blue', 'orange', 'green', 'red', 'purple', 'grey'
+
+% Personal information
+\name{Anvesh Varma}{Dantuluri}
+\address{New York, USA}{} % Assuming New York is current location for simplicity
+\phone[mobile]{+1 (201) 640-9986}
+\email{ad7647@nyu.edu}
+\social[linkedin]{linkedin.com/in/anvesh-varma}
+\social[github]{github.com/Anveshvarmad}
+
+% Adjust margins for ATS compatibility if needed (defaults are usually good)
+% \usepackage[scale=0.75]{geometry} % Default in moderncv
+
+% Custom commands for bullet points
+\usepackage{enumitem}
+\setlist[itemize]{
+  label=\textbullet,
+  leftmargin=*,
+  itemsep=0em, % Spacing between items
+  parsep=0em,  % Spacing between paragraphs within an item
+  partopsep=0em, % Spacing above the first item
+  topsep=0.2em, % Spacing above the entire list
+}
+
+% --- Custom commands for section formatting ---
+% Redefine \section to use \section* to suppress numbering and customize spacing
+\makeatletter
+\renewcommand{\section}[1]{%
+  \par\addvspace{1.5ex}%
+  \phantomsection{}%
+  \addcontentsline{toc}{section}{#1}%
+  {\raggedright\Large\itshape\bfseries\upshape\color{color2}#1\par}% % Using color2 for headings
+  \nobreak\addvspace{0.5ex}\@afterheading%
+}
+\makeatother
+
+% Adjust section title color to match moderncvcolor
+\colorlet{color2}{black} % Fallback if moderncvcolor isn't defined yet
+
+\begin{document}
+
+\maketitle % Prints the name and contact information
+
+\section{Education}
+\cventry{Aug 2024 – May 2026}{Master of Science, Computer Engineering}{\textbf{New York University}}{New York, USA}{}{
+  \begin{itemize}
+    \item Key Coursework: \textbf{Machine Learning}, \textbf{Deep Learning}, \textbf{Reinforcement Learning}, \textbf{Big Data}, Advanced Python for Data Science, Computer System Architecture, Applied Matrix Theory, Systems Engineering
+    \item Migrated legacy Python CGI scripts to a modern \textbf{Django} web application, deployed using Apache + mod\_wsgi, improving maintainability and runtime efficiency
+    \item Certifications: \textbf{Data Analysis with Python} (IBM), Python Data Structures (University of Michigan), Google Data Analytics (Google), Data Visualization with Tableau (UC Davis)
+  \end{itemize}
+}
+
+\section{Technical Skills}
+\begin{itemize}
+    \item \textbf{Programming \& Data:} Python, SQL, C++, Bash
+    \item \textbf{Machine Learning:} Supervised Learning, Unsupervised Learning, Feature Engineering, Model Evaluation, \textbf{AI}
+    \item \textbf{Deep Learning:} PyTorch, TensorFlow, Neural Networks, CNNs, Transfer Learning
+    \item \textbf{LLMs \& Generative AI:} Large Language Models, Prompt Engineering, RAG, Embeddings
+    \item \textbf{MLOps \& Deployment:} Model Versioning, Experiment Tracking, Docker, CI/CD, Inference Optimization
+    \item \textbf{Cloud \& AI Systems:} AWS (EC2, S3, Lambda, Bedrock), GPU Computing, Cost Optimization
+\end{itemize}
+
+\section{Work Experience}
+\cventry{May 2025 – Aug 2025}{Software Development Engineer Intern (\textbf{AI Systems})}{\textbf{INFOLOB}}{Remote}{}{
+  \begin{itemize}
+    \item Designed a fault-tolerant \textbf{AI orchestration layer} on MCP servers integrating \textbf{AWS Bedrock} for \textbf{inference}
+    \item Implemented autonomous fallback and recovery mechanisms increasing task completion by 33\% and availability by 40\%
+    \item Optimized end-to-end \textbf{inference pipelines} sustaining sub-minute latency under high-concurrency workloads
+    \item Reduced operational cost by 28\% through intelligent model routing and dynamic endpoint selection
+  \end{itemize}
+}
+\cventry{May 2024 – Jul 2024}{Software Engineering Intern (\textbf{Data \& Analytics})}{\textbf{INFOTECH LABS}}{Hyderabad, India}{}{
+  \begin{itemize}
+    \item Developed scalable \textbf{Power BI dashboards} using \textbf{SQL} and DAX accelerating insight delivery by 20\%
+    \item Analyzed high-volume sales datasets identifying trends driving
+  \end{itemize}
+}
+
+\end{document}

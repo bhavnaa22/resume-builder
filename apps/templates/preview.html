@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% block title %}Preview - Taylrd{% endblock %}
+
+{% block content %}
+<div id="preview-root" data-job-id="{{ job_id }}"></div>
+
+<script type="text/babel">
+function PreviewPage() {
+  const jobId = document.getElementById('preview-root').dataset.jobId;
+  const [latex, setLatex] = React.useState('Loading...');
+  const [pdfUrl, setPdfUrl] = React.useState('');
+  const [generating, setGenerating] = React.useState(false);
+  const [activeTab, setActiveTab] = React.useState('latex');
+
+  React.useEffect(() => {
+    fetch(`/api/latex/${jobId}`)
+      .then(res => res.json())
+      .then(data => setLatex(data.latex || 'Error loading LaTeX'));
+    
+    fetch(`/api/files/${jobId}`)
+      .then(res => res.json())
+      .then(data => {
+        if (data.files.pdf) setPdfUrl(`/static/pdfs/resume_${jobId}.pdf`);
+      });
+  }, [jobId]);
+
+  const generatePDF = async () => {
+    setGenerating(true);
+    const res = await fetch(`/api/generate-pdf/${jobId}`, {method: 'POST'});
+    const data = await res.json();
+    if (data.success) {
+      setPdfUrl(data.pdf_url);
+      setActiveTab('pdf');
+    }
+    setGenerating(false);
+  };
+
+  return (
+    <div className="preview-container">
+      <h2>Preview Resume</h2>
+      <p className="job-id">ID: {jobId}</p>
+      
+      <div className="tabs">
+        <button className={activeTab === 'latex' ? 'active' : ''} 
+                onClick={() => setActiveTab('latex')}>LaTeX</button>
+        <button className={activeTab === 'pdf' ? 'active' : ''} 
+                onClick={() => setActiveTab('pdf')}>PDF</button>
+      </div>
+
+      {activeTab === 'latex' ? (
+        <div className="latex-view">
+          <pre>{latex}</pre>
+          <a href={`/api/download/${jobId}?type=tex`} className="btn">Download .tex</a>
+        </div>
+      ) : (
+        <div className="pdf-view">
+          {pdfUrl ? (
+            <iframe src={pdfUrl} width="100%" height="600px" />
+          ) : (
+            <div className="generate-pdf">
+              <p>PDF not generated yet</p>
+              <button onClick={generatePDF} disabled={generating}>
+                {generating ? 'Generating...' : 'Generate PDF'}
+              </button>
+            </div>
+          )}
+        </div>
+      )}
+      
+      <a href={`/download/${jobId}`} className="btn-primary">Continue →</a>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('preview-root')).render(<PreviewPage />);
+</script>
+
+<style>
+.preview-container { max-width: 1000px; margin: 2rem auto; }
+.job-id { color: #666; margin-bottom: 1rem; }
+.tabs { display: flex; gap: 1rem; margin-bottom: 1rem; }
+.tabs button { padding: 0.5rem 1rem; border: none; background: #eee; cursor: pointer; }
+.tabs button.active { background: #667eea; color: white; }
+.latex-view pre { background: #2d3748; color: #fff; padding: 1rem; overflow-x: auto; max-height: 500px; }
+.pdf-view { border: 1px solid #ddd; }
+.generate-pdf { padding: 3rem; text-align: center; }
+.btn, .btn-primary { display: inline-block; padding: 0.75rem 1.5rem; background: #667eea; color: white; text-decoration: none; margin-top: 1rem; }
+</style>
+{% endblock %}

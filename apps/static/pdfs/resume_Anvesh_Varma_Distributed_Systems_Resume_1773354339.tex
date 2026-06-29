@@ -1,0 +1,91 @@
+\documentclass[letterpaper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern} % Provides Latin Modern font, which is clean and widely supported
+\usepackage[letterpaper,
+            margin=0.7in,
+            includeheadfoot]{geometry}
+\usepackage{enumitem} % For custom list environments (e.g., removing extra spacing)
+\usepackage{ragged2e} % For \RaggedRight to ensure left-aligned text without hyphenation
+\usepackage{titlesec} % For customizing section titles
+\usepackage{hyperref} % For clickable links (email, LinkedIn, GitHub)
+\usepackage{xcolor} % For defining colors, though links are kept black for ATS
+
+% Define colors (kept black for maximum ATS compatibility)
+\definecolor{primary}{HTML}{000000} % Black
+
+% Custom section titles for a professional, clean look
+\titlespacing{\section}{0pt}{12pt}{5pt} % Spacing: before section, after section, indent
+\titleformat{\section}{\Large\bfseries\color{primary}\RaggedRight}{}{0em}{}[\titlerule] % Style: Large, bold, left-aligned, with a horizontal rule
+
+% Remove page number for a resume
+\pagestyle{empty}
+
+% Reduce spacing between list items globally
+\setlist{nosep}
+
+% Command for a skill entry in the Technical Skills section
+\newcommand{\skillentry}[2]{%
+    \textbf{#1}: #2\\%
+}
+
+\begin{document}
+
+% --- Header: Name and Contact Information ---
+\begin{center}
+    {\Huge\textbf{Anvesh Varma Dantuluri}}
+    \vspace{2pt}
+    
+    \href{mailto:ad7647@nyu.edu}{\color{black}ad7647@nyu.edu} $|$ +1 (201) 640-9986 $|$ \href{https://linkedin.com/in/anvesh-varma}{\color{black}linkedin.com/in/anvesh-varma} $|$ \href{https://github.com/Anveshvarmad}{\color{black}github.com/Anveshvarmad}
+    \vspace{8pt} % Space after contact info
+\end{center}
+
+% --- Education Section ---
+\section*{Education}
+\vspace{-5pt} % Adjust spacing if needed
+\RaggedRight % Ensure left alignment for this section
+
+\textbf{New York University} \hfill New York, USA \\
+Master of Science, Computer Engineering \hfill Aug 2024 – May 2026
+\begin{itemize}[leftmargin=*,label=\textbullet]
+    \item Key Coursework: Machine Learning, Deep Learning, Reinforcement Learning, Big Data, Advanced \textbf{Python} for Data Science, Computer System Architecture, Applied Matrix Theory, Systems Engineering
+    \item Migrated legacy \textbf{Python} CGI scripts to a modern Django web application, deployed using Apache + mod\_wsgi, improving maintainability and runtime efficiency
+    \item Certifications: Data Analysis with \textbf{Python} (IBM), \textbf{Python} Data Structures (University of Michigan), Google Data Analytics (Google), Data Visualization with Tableau (UC Davis)
+\end{itemize}
+
+% --- Technical Skills Section ---
+\section*{Technical Skills}
+\vspace{-5pt}
+\RaggedRight
+\begin{itemize}[leftmargin=*,label=\textbullet,after=\vspace{-5pt}] % Added after to reduce space after the list
+    \item \skillentry{Programming Languages}{\textbf{Python}, \textbf{Java}, \textbf{C++}, Go, SQL, JavaScript, TypeScript, Bash}
+    \item \skillentry{Backend \& APIs}{RESTful APIs, Microservices, Django, Flask, Node.js, Express.js}
+    \item \skillentry{Databases \& Storage}{MySQL, PostgreSQL, MongoDB, Redis}
+    \item \skillentry{Systems \& Infrastructure}{Linux, Multithreading, Concurrency, Memory Management, Docker, CI/CD}
+    \item \skillentry{Cloud \& Developer Tools}{AWS (EC2, S3, Lambda), Apache, Nginx, Git, GitHub, Unix Shell, VS Code}
+    \item \skillentry{Testing \& Reliability}{Unit Testing, Integration Testing, Debugging, Logging, Performance Monitoring}
+\end{itemize}
+
+% --- Work Experience Section ---
+\section*{Work Experience}
+\vspace{-5pt}
+\RaggedRight
+
+\textbf{INFOLOB} \hfill Remote \\
+Software Development Engineer Intern \hfill May 2025 – Aug 2025
+\begin{itemize}[leftmargin=*,label=\textbullet]
+    \item Owned a production backend service on an MCP server integrating 3+ AWS Bedrock components
+    \item Shipped resilient execution logic with retries and recovery, improving task success by 33\% and uptime 40\%
+    \item Scaled request handling to sustain sub-minute latency at 2k+ tasks/day under peak workloads
+    \item Drove a 28\% reduction in inference costs through routing optimization and endpoint orchestration
+\end{itemize}
+
+\textbf{INFOTECH LABS} \hfill Hyderabad, India \\
+Software Engineering Intern \hfill May 2024 – Jul 2024
+\begin{itemize}[leftmargin=*,label=\textbullet]
+    \item Delivered Power BI dashboards using DAX and SQL for 5+ business teams, accelerating insights by 20\%
+    \item Analyzed 1M+ sales records using SQL and Excel models, driving a 15\% KPI uplift
+    \item Built automated reporting solutions for sales and marketing departments, improving data accessibility and decision-making efficiency
+\end{itemize}
+
+\end{document}

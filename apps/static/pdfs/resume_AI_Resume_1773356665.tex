@@ -1,0 +1,77 @@
+\documentclass[11pt,a4paper]{moderncv}
+
+% moderncv options
+\moderncvstyle{classic} % Change style if desired: casual, classic, banking, oldstyle, empty
+\moderncvcolor{blue} % Change color if desired: black, blue, green, grey, orange, purple, red
+
+% Adjust margins
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\geometry{a4paper,
+          top=1.2cm,
+          bottom=1.2cm,
+          left=2.5cm,
+          right=2.5cm}
+
+% For bullet points without indentation
+\usepackage{enumitem}
+\setlist[itemize]{leftmargin=*}
+
+% Personal details
+\name{Anvesh Varma}{Dantuluri}
+\email{ad7647@nyu.edu}
+\phone{+1 (201) 640-9986}
+\social[linkedin]{anvesh-varma}
+\social[github]{Anveshvarmad}
+
+% Disable page numbers
+\nopagenumbers{}
+
+\begin{document}
+
+% Create the resume header
+\makecvtitle
+
+% Remove the default title spacing to bring content closer to the header
+\vspace*{-1.5cm} % Adjust as needed for tighter spacing
+
+% --- Education Section ---
+\section{Education}
+\cventry{Aug 2024 – May 2026}{Master of Science, Computer Engineering}{New York University}{New York, USA}{}{
+    \begin{itemize}[leftmargin=*,label=\tiny\textbullet]
+        \item Key Coursework: Machine Learning, Deep Learning, Reinforcement Learning, Big Data, Advanced Python for Data Science, Computer System Architecture, Applied Matrix Theory, Systems Engineering
+        \item Migrated legacy Python CGI scripts to a modern Django web application, deployed using Apache + mod\_wsgi, improving maintainability and runtime efficiency
+        \item Certifications: Data Analysis with Python (IBM), Python Data Structures (University of Michigan), Google Data Analytics (Google), Data Visualization with Tableau (UC Davis)
+    \end{itemize}
+}
+
+% --- Technical Skills Section ---
+\section{Technical Skills}
+\begin{itemize}[leftmargin=*,label={}] % No bullet for main categories
+    \item \textbf{Programming \& Data:} Python, SQL, C++, Bash
+    \item \textbf{Machine Learning:} Supervised Learning, Unsupervised Learning, Feature Engineering, Model Evaluation
+    \item \textbf{Deep Learning:} PyTorch, TensorFlow, Neural Networks, CNNs, Transfer Learning
+    \item \textbf{LLMs \& Generative AI:} Large Language Models, Prompt Engineering, RAG, Embeddings
+    \item \textbf{MLOps \& Deployment:} Model Versioning, Experiment Tracking, Docker, CI/CD, Inference Optimization
+    \item \textbf{Cloud \& AI Systems:} AWS (EC2, S3, Lambda, Bedrock), GPU Computing, Cost Optimization
+    \item \textbf{Development Tools:} Git, Docker, CI/CD, Package Managers (\texttt{npm}, pip), Build Automation (\texttt{start} scripts)
+\end{itemize}
+
+% --- Work Experience Section ---
+\section{Work Experience}
+\cventry{May 2025 – Aug 2025}{Software Development Engineer Intern (AI Systems)}{INFOLOB}{Remote}{}{
+    \begin{itemize}[leftmargin=*,label=\tiny\textbullet]
+        \item Designed a fault-tolerant AI orchestration layer on MCP servers integrating AWS Bedrock for inference
+        \item Implemented autonomous fallback and recovery mechanisms increasing task completion by 33\% and availability by 40\%
+        \item Optimized end-to-end inference pipelines sustaining sub-minute latency under high-concurrency workloads
+        \item Reduced operational cost by 28\% through intelligent model routing and dynamic endpoint selection
+    \end{itemize}
+}
+\cventry{May 2024 – Jul 2024}{Software Engineering Intern (Data \& Analytics)}{INFOTECH LABS}{Hyderabad, India}{}{
+    \begin{itemize}[leftmargin=*,label=\tiny\textbullet]
+        \item Developed scalable Power BI dashboards using SQL and DAX accelerating insight delivery by 20\%
+        \item Analyzed high-volume sales datasets identifying trends driving
+    \end{itemize}
+}
+
+\end{document}
